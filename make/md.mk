@@ -39,7 +39,7 @@ VERSION_TXT=version.txt
 VERSION=$(shell cat $(VERSION_TXT))
 AUTHOR=$(shell git config --local user.name)
 
-MD_GEN=../md_gen/export/py
+#MD_GEN=../md_gen/export/py
 
 $(TARGET): $(MDS_FINAL)
 	$(MD_GEN)/md_join.py -o $@ $^
