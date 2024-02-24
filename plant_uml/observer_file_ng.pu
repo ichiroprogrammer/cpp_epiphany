@@ -1,0 +1,22 @@
+@startuml
+
+package  ObserverNG {
+    agent "observer_ng.h" as observer_ng_h
+    agent "observer_ng.cpp" as observer_ng_cpp
+}
+
+package  SubjectNG {
+    agent "subject_ng.h" as   subject_ng_h
+    agent "subject_ng.cpp" as subject_ng_cpp
+}
+
+observer_ng_h   <-right->  subject_ng_h
+observer_ng_cpp -up->      observer_ng_h
+subject_ng_cpp  -up->      subject_ng_h
+
+note as N
+SubjectNGとObserverNG
+が相互依存になる。
+end note
+
+@enduml

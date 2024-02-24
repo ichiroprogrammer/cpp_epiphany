@@ -1,0 +1,21 @@
+@startuml
+
+[*] --> idle
+idle    --> running : run
+idle    --> idle : abort
+idle    --> idle : suspend
+
+running --> running : run
+running --> idle : abort
+running --> suspending : suspend/suspend_count = 1
+
+suspending  --> running: run [suspend_count == 0]/\n--suspend_count 
+suspending  --> idle : abort / suspend_count = 0
+suspending  --> suspending : suspend/++suspend_count 
+
+note top of idle
+    threadの状態を単純に表した
+    ステートマシン図
+end note
+
+@enduml

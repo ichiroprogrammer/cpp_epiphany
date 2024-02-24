@@ -1,0 +1,14 @@
+@startuml
+class WrappedServer {
+    Start()
+    SayHello()
+    SayGoodbye()
+    Shutdown()
+}
+
+Client -right-> WrappedServer
+
+WrappedServerProxy -up-|> WrappedServer
+
+WrappedServerProxy --> WrappedServer
+@enduml

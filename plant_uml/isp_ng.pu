@@ -1,0 +1,19 @@
+@startuml
+
+rectangle stream_read_writer.h {
+    class StreamReadWriter {
+        Read(string&);
+        Write(const string&);
+    }
+}
+
+ClientR -up-> StreamReadWriter
+ClientW -up-> StreamReadWriter
+
+note as N
+StreamReadWriterは、
+ClientRからはRead、
+ClientWからはWrite
+のみを使用されている。
+end note
+@enduml

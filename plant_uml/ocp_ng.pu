@@ -1,0 +1,26 @@
+@startuml
+
+package Transactor {
+    class TransactorNotOCP
+}
+
+package Transactor_Impl {
+    class TransactorGoogle
+    class TransactorSuica
+    class TransactorEdy
+}
+
+TransactorNotOCP ---> TransactorGoogle
+TransactorNotOCP ---> TransactorSuica
+TransactorNotOCP ---> TransactorEdy
+
+note as N
+TransactorNotOCPは
+    TransactorGoogle, 
+    TransactorSuica, 
+    TransactorEdy
+すべてに強く依存する。
+end note
+
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+
+rectangle stream_reader.h {
+    class StreamReader {
+        Read(string&);
+    }
+}
+
+rectangle stream_writer.h {
+    class StreamWriter {
+        Write(const string&);
+    }
+}
+
+ClientR -up-> StreamReader
+ClientW -up-> StreamWriter
+
+note as N
+StreamReaderはClientR
+からのみ依存されている。
+StreamWriterはClientW
+からのみ依存されている。
+end note
+
+@enduml
+
+
+

@@ -1,0 +1,40 @@
+@startuml
+scale max 700 width
+
+package "SubjectNG" as SubjectNG_Pkg {
+    class SubjectNG {
+        -notify()
+    }
+}
+
+package ObserverNG {
+    class ObserverNG_2 {
+        Update(const SubjectNG&)
+    }
+
+    class ObserverNG_1 {
+        Update(const SubjectNG&)
+    }
+
+    class ObserverNG_0 {
+        Update(const SubjectNG&)
+    }
+}
+
+SubjectNG o-down->   ObserverNG_0
+SubjectNG o-down->   ObserverNG_1
+SubjectNG o-down->   ObserverNG_2
+
+ObserverNG_0 -up-->   SubjectNG
+ObserverNG_1 -up-->   SubjectNG
+ObserverNG_2 -up-->   SubjectNG
+
+note as N
+SubjectNGとPackageObserverNG
+が相互依存になる。
+end note
+
+@enduml
+
+
+

@@ -1,0 +1,32 @@
+@startuml
+
+class FileEntityVisitor {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+class TestablePrinter {
+    TestablePrinter(ostream&)
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+class PathnamePrinter1 {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+class PathnamePrinter2 {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+TestablePrinter -up-|> FileEntityVisitor
+PathnamePrinter1 -up-|> TestablePrinter
+PathnamePrinter2 -up-|> TestablePrinter
+
+@enduml

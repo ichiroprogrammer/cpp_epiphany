@@ -1,0 +1,18 @@
+@startuml
+
+class FileEntity
+class File
+class Dir
+class OtherEntity
+
+File  -up-|> FileEntity
+Dir   -up-|> FileEntity
+OtherEntity -up-|> FileEntity
+
+Printer -> FileEntity
+Printer -> File
+Printer -> Dir
+Printer -> OtherEntity
+
+@enduml
+

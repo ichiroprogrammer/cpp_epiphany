@@ -1,0 +1,24 @@
+@startuml
+
+rectangle std #lightyellow
+rectangle Nstd #lightblue
+rectangle Logging #lightgreen
+rectangle App #pink
+rectangle Global #white
+
+std <-right- Nstd #blue
+std <-right- Logging #yellowgreen
+std <-right- App #pink
+std <-right- Global #black
+
+Nstd <-right- Logging #yellowgreen
+Nstd <-right- App #pink
+Nstd <-right- Global #black
+
+Logging <-right- App #pink
+Logging <-right- Global #black
+
+App <-right- Global #black
+
+@enduml
+

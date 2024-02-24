@@ -1,0 +1,15 @@
+@startuml
+
+class Base
+class Derived_0
+class Derived_1
+class DerivedDerived
+
+Derived_0 -up-> Base
+Derived_1 -up-> Base
+DerivedDerived -up-> Derived_1
+DerivedDerived -up-> Derived_0
+
+@enduml
+
+

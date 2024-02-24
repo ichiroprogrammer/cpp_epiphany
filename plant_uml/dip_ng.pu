@@ -1,0 +1,24 @@
+@startuml
+
+package ServerNG {
+    class Server {
+        RequireStringAsync()
+    }
+}
+
+package ClientNG {
+    class Client {
+        Done()
+    }
+}
+
+Server <--> Client
+
+note as N
+上位概念が下位概念に依存。
+これは好ましい依存関係ではない。
+end note
+
+@enduml
+
+

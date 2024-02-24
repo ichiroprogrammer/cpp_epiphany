@@ -1,0 +1,54 @@
+@startuml
+scale max 700 width
+
+class FileEntityVisitor {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+class PathnamePrinter1 {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+class PathnamePrinter2 {
+    Visit(File&)
+    Visit(Dir&)
+    Visit(OtherEntity&)
+}
+
+PathnamePrinter1 -up-|> FileEntityVisitor
+PathnamePrinter2 -up-|> FileEntityVisitor
+
+class FileEntity {
+    Accept(FileEntityVisitor&)
+}
+
+class File {
+    Accept(FileEntityVisitor&)
+}
+
+class Dir {
+    Accept(FileEntityVisitor&)
+}
+
+class OtherEntity {
+    Accept(FileEntityVisitor&)
+}
+
+FileEntityVisitor -up-> File
+FileEntityVisitor -up-> Dir
+FileEntityVisitor -up-> OtherEntity
+
+File  -up-|> FileEntity
+Dir   -up-|> FileEntity
+OtherEntity -up-|> FileEntity
+
+FileEntity -down-> FileEntityVisitor
+
+Printer -right->FileEntityVisitor
+Printer -right->FileEntity
+
+@enduml

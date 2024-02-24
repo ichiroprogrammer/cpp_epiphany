@@ -1,0 +1,19 @@
+@startuml
+scale max 700 width
+
+agent "gtest/gtest.h" as gtest_h
+
+rectangle "Lib" as Lib {
+    agent "h/widget.h" as widget_h
+    agent "src/widget.cpp" as widget_cpp
+    agent "ut/widget_ut.cpp" as widget_ut_cpp
+}
+
+agent client
+
+widget_h -left-> gtest_h
+widget_cpp -up-> widget_h
+widget_ut_cpp -up-> widget_h
+client -up-> widget_h
+
+@enduml

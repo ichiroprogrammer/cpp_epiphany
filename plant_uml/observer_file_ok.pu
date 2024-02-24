@@ -1,0 +1,23 @@
+@startuml
+
+package ObserverOK {
+    agent "observer_ok.h" as   observer_ok_h
+    agent "observer_ok.cpp" as observer_ok_cpp
+}
+
+package SubjectOK {
+    agent "subject_ok.h" as   subject_ok_h
+    agent "subject_ok.cpp" as subject_ok_cpp
+}
+
+observer_ok_h   -right->  subject_ok_h
+observer_ok_cpp -up->     observer_ok_h
+subject_ok_cpp  -up->     subject_ok_h
+
+
+note as N
+SubjectOKはObserverOK
+に依存しない。
+end note
+
+@enduml

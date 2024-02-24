@@ -1,0 +1,44 @@
+@startuml
+
+scale max 750 width
+
+rectangle "Not Pimpl" as Not_Pimpl {
+    agent "string_holder_old.h" as string_holder_old_h
+    agent "string_holder_old.cpp" as string_holder_old_cpp
+    agent "client_old.cpp" as client_old_cpp
+
+    string_holder_old_cpp -up-> string_holder_old_h
+    client_old_cpp -up-> string_holder_old_h
+}
+
+rectangle "Pimpl" as Pimpl {
+    agent "string_holder_new.h" as string_holder_new_h
+    agent "string_holder_new.cpp" as string_holder_new_cpp
+    agent "client_new.cpp" as client_new_cpp
+
+    string_holder_new_cpp -up->  string_holder_new_h
+    client_new_cpp -up-> string_holder_new_h
+}
+
+agent "std::string" as string
+
+string_holder_old_h -up-> string
+string_holder_new_cpp -up->  string
+
+note top of string_holder_old_h
+string_holder_old.hは、
+std::stringに依存しているため、
+string_holder_old.hを使用する
+ファイル(client_old.cpp)に
+std::stringへの依存を強要する。
+end note
+
+note top of string_holder_new_h
+string_holder_new.hは、
+std::stringに依存していないので、
+string_holder_new.hを使用する
+ファイル(client_new.cpp)に
+std::stringへの依存を強要しない。
+end note
+
+@enduml

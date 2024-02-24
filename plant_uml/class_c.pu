@@ -1,0 +1,19 @@
+@startuml
+
+class Point {
+    + GetXY() const
+    + SetXY()
+    + {abstract} Quantity() const  // 仮想関数
+    + {abstract} Multipy()         // 仮想関数
+}
+
+class Point3D {
+    + GetXYZ() const
+    + SetXYZ()
+    + Quantity() const  // オーバーライド
+    + Multipy()         // オーバーライド
+}
+
+Point <|-down- Point3D
+
+@enduml

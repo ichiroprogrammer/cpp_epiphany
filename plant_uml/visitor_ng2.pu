@@ -1,0 +1,35 @@
+@startuml
+
+class FileEntity {
+    PrintPathname1()
+    PrintPathname2()
+}
+
+class File {
+    PrintPathname1()
+    PrintPathname2()
+}
+
+class Dir {
+    PrintPathname1()
+    PrintPathname2()
+}
+
+class OtherEntity {
+    PrintPathname1()
+    PrintPathname2()
+}
+
+class Printer {
+    PrintPathname1()
+    PrintPathname2()
+}
+
+File  -up-|> FileEntity
+Dir   -up-|> FileEntity
+OtherEntity -up-|> FileEntity
+
+Printer -> FileEntity
+
+@enduml
+

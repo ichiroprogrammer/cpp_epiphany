@@ -1,0 +1,48 @@
+@startuml
+
+hide footbox
+
+participant XXX
+participant NotDI
+participant DI
+
+alt not use DI
+
+    create NotDI
+    XXX -> NotDI : new
+
+    note left: DIを使わないパターン
+
+    create Depended
+    NotDI -> Depended : new
+
+    XXX -> NotDI : DoSomething
+    activate NotDI
+
+        NotDI -> Depended : DoSomething
+        activate Depended
+        deactivate Depended
+
+    deactivate NotDI
+
+else use DI
+
+    create Depended
+    XXX -> Depended : depended = make_unique<Depended>()
+
+    create DI
+    XXX -> DI : new DI(depended)
+
+    note left: DIを使うパターン
+
+    XXX -> DI : DoSomething
+    activate DI
+
+        DI -> Depended : DoSomething
+        activate Depended
+        deactivate Depended
+
+    deactivate DI
+end
+
+@enduml

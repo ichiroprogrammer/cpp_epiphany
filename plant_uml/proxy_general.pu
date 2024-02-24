@@ -1,0 +1,23 @@
+@startuml
+
+class Subject {
+    DoSomething()
+}
+
+class RealSubject {
+    DoSomething()
+}
+
+class Proxy {
+    DoSomething()
+}
+
+Proxy -up-|> Subject
+RealSubject -up-|> Subject
+
+Client -right-> Subject
+
+Proxy -right-> RealSubject
+
+@enduml
+

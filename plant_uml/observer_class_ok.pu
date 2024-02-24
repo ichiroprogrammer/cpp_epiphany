@@ -1,0 +1,38 @@
+@startuml
+scale max 700 width
+
+package "SubjectOK" as SubjectOK_Pkg {
+    class SubjectOK {
+        Attach()
+        Notify()
+    }
+
+    class Observer {
+        Update(const SubjectOK&)
+    }
+}
+
+package ObserverOK {
+    class ObserverOK_0 {
+        Update(const SubjectOK&)
+    }
+    class ObserverOK_1 {
+        Update(const SubjectOK&)
+    }
+    class ObserverOK_2 {
+        Update(const SubjectOK&)
+    }
+}
+
+Observer -up->      SubjectOK  
+SubjectOK    o-down->   Observer
+ObserverOK_0 -up-|>     Observer
+ObserverOK_1 -up-|>     Observer
+ObserverOK_2 -up-|>     Observer
+
+note as N
+SubjectOKはObserverOKに依存しない。
+end note
+
+@enduml
+

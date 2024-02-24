@@ -1,0 +1,27 @@
+@startuml
+
+class ThreadNewStyle {
+    Abort()
+    Run()
+    Suspend()
+}
+
+class ThreadNewStyleState {
+    Abort()
+    Run()
+    Suspend()
+}
+
+ThreadNewStyleState <-up- ThreadNewStyle
+
+ThreadNewStyleState_Idle       -up-|> ThreadNewStyleState
+ThreadNewStyleState_Running    -up-|> ThreadNewStyleState
+ThreadNewStyleState_Suspending -left-|> ThreadNewStyleState
+
+note as N
+ThreadNewStyleは、ほとんどの動作を
+ThreadNewStyleStateに委譲する。
+end note
+
+@enduml
+

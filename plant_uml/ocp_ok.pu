@@ -1,0 +1,30 @@
+@startuml
+
+package Transactor {
+    class TransactorOCP 
+    class TransactorIF
+}
+
+package Transactor_Impl {
+    class TransactorGoogle
+    class TransactorSuica
+    class TransactorEdy
+}
+
+TransactorIF <|-- TransactorGoogle
+TransactorIF <|-- TransactorSuica
+TransactorIF <|-- TransactorEdy
+
+TransactorOCP --> TransactorIF
+
+note as N
+TransactorOCPはTransactorIF
+にのみ依存するため、
+Transaction Method
+(TransactorIFの派生class)
+に影響を受けない。
+end note
+
+@enduml
+
+

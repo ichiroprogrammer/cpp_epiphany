@@ -1,0 +1,23 @@
+@startuml
+
+hide footbox
+
+participant "ClientNG::Client" as client
+participant "ServerNG::Server" as server
+
+[->  client           : GetString
+     activate client
+     client ->> server : RequireStringAsync
+    
+               server -> server : dispatch
+               activate server
+    
+     client -> client : wait_done
+     activate client
+     client <- server : Done
+                     deactivate server
+     deactivate client
+[<-- client : string
+     deactivate client
+
+@enduml

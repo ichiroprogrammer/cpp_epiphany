@@ -1,0 +1,28 @@
+@startuml
+
+package ServerOK {
+    class Server {
+        RequireStringAsync()
+    }
+    class ClientIF {
+        Done()
+    }
+}
+
+package ClientOK{
+    class Client {
+        Done()
+    }
+}
+
+Server -left-> ClientIF
+ClientIF <|-- Client
+Client --> Server
+
+note as N
+ServerOKは、ClientOKに依存していない。
+end note
+
+@enduml
+
+
