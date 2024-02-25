@@ -17,7 +17,12 @@ EXE2_NODIR=example2.exe
 EXE2:=$(addprefix $(O),$(EXE2_NODIR))
 EXE2_DONE:=$(addsuffix .done,$(EXE2))
 
-GTEST_DIR:=../../googletest/googletest/
+GTEST_DIR ?=
+
+ifeq ($(GTEST_DIR),)
+GTEST_DIR:=../../../googletest/googletest/
+endif
+
 GTEST_DIR_ABSOLUTE=$(shell cd $(GTEST_DIR); pwd)
 
 GTEST_INC:=$(GTEST_DIR)include/
